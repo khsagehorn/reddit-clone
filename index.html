@@ -14,9 +14,10 @@
     <button ng-model="newPost" ng-click="newPost = !newPost">Create New Post</button>
 
   </header>
+  <p>Sort posts</p>
   <div ng-hide="newPost">
     <div class="formBox">
-      <form name="newPost" ng-submit="newPost(post)">
+      <form name="newPost" ng-submit="addPost(post)">
         <h3>Post Something</h3>
         <input type="text" name="title" placeholder="Title" ng-model="post.title"></input><br><br>
         <input type="text" name="author" placeholder="Author" ng-model="post.author"></input><br><br>
@@ -27,7 +28,7 @@
     </div>
   </div>
   <div >
-    <ul ng-repeat="post in posts | orderBy:'-rating' | filter:search" style="list-style-type:none;">
+    <ul ng-repeat="post in posts | orderBy:'-date' | filter:search" style="list-style-type:none;">
       <li>   
           <container class="postBody">
             <img ng-src="{{post.image}}">
@@ -37,10 +38,28 @@
             <span class="glyphicon glyphicon-arrow-up up" ng-click="post.rating = post.rating + 1"></span>
             <span class="glyphicon glyphicon-arrow-down down" ng-click="post.rating = post.rating - 1"></span>
             </span>
-            <p>{{post.date }} by {{post.author}}</p>
+            <p>{{post.date | date:'MM/dd/yyyy'}} at {{post.date | date:'shortTime'}} by {{post.author}}</p>
             <p>{{post.description}}</p>
-            <button ng-show="{{post.comments.length}} > 0">See Comments</button>  <button>Add Comment</button>
-          </container>
+            <button ng-model="showComments" ng-init="showComments = false" ng-show="post.comments.length > 0" ng-click="showComments = !showComments">See Comments</button>  <button ng-model="newComment" ng-click="newComment = !newComment">Add Comment</button>
+            
+            <div ng-show="showComments">
+              <div ng-repeat="comment in post.comments | orderBy:'-date'">
+                <hr><br>
+                <h4>{{comment.date | date:'MM/dd/yyyy'}} at {{comment.date | date:'shortTime'}} by {{comment.user}}</h4>
+                <p>{{comment.text}}</p>
+              </div>
+            </div>
+          </container><br>
+          <div ng-hide="newComment">
+            <div class="commentBox">
+              <form name="newComment" ng-submit="addComment(comment, post.id)" ng-submit="newComment">
+                <h3>Say Something</h3>
+                <input type="text" name="user" placeholder="User" ng-model="comment.user"></input><br><br>
+                <input type="text" name="text" placeholder="Text" ng-model="comment.text"></input><br><br>
+                <button type="submit">Post it.</button><br><br>
+              </form>
+            </div>
+          </div>  
       <li>
     <ul>
 

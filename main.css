@@ -23,6 +23,7 @@ img {
   margin: 1rem;
   padding: 1rem;
   box-shadow: 0 8px 6px -6px black;
+  width: 95%;
 }
 
 .formBox {
@@ -41,6 +42,20 @@ img {
 
 .formBox input {
   width: 75%;
+}
+
+.commentBox {
+  text-align: center;
+  width: 50%;
+  border-width: 1px;
+  border-color: #d2d2d2;
+  border-style: solid;
+  background-color: #FCD999;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  box-shadow: 0 8px 6px -6px black;
+
 }
 
 container span{
@@ -79,4 +94,6 @@ header button{
 .red {
   color: red;
 }
+
+.
 
