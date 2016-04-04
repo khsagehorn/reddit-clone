@@ -1,8 +1,8 @@
 
   var app = angular.module('redditClone', []);
 
-  app.controller('PostsController', function($scope){
-    $scope.posts = [
+app.controller('PostsController', function($scope){
+  $scope.posts = [
     {
       id:1,
       title: 'Killer Tofu',
@@ -46,4 +46,11 @@
 
   ]
 
-  })
+
+  $scope.newPost = function(post) {
+    $scope.post.date = Date.now();
+    $scope.post.rating = 0;
+    $scope.posts.push(post);
+    $scope.post = {};
+  }
+})

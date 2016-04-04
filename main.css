@@ -1,3 +1,7 @@
+body {
+  background-color: #f9f9f9;
+}
+
 img {
   float: left;
   height: 20%;
@@ -12,6 +16,7 @@ img {
 
 .postBody {
 /*  background-color: #d2d2d2;*/
+  background-color: white;
   border-width: 1px;
   border-color: #d2d2d2;
   border-style: solid;
@@ -20,13 +25,32 @@ img {
   box-shadow: 0 8px 6px -6px black;
 }
 
+.formBox {
+  text-align: center;
+  width: 50%;
+  border-width: 1px;
+  border-color: #d2d2d2;
+  border-style: solid;
+  background-color: #FCD999;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  box-shadow: 0 8px 6px -6px black;
+
+}
+
+.formBox input {
+  width: 75%;
+}
+
 container span{
   font-size: 3rem;
 }
 
 header {
-    background-color: #f2f2f2;
+    background-color: #C1DBE3;
     padding: 2rem;
+    box-shadow: 0 8px 6px -6px black;
 }
 
 header h1{
@@ -39,3 +63,20 @@ header button{
   float:right;
   margin: 1rem;
 }
+
+.up {
+  color: #457B9D;
+}
+
+.down {
+  color: #E63946;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+

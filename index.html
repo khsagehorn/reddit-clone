@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="redditClone">
+<html ng-app="redditClone" >
 <head>
   <title>Angular Reddit Clone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
@@ -7,26 +7,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body ng-cloak ng-controller="PostsController">
   <header>
-    <h1>reddon't</h1>
-    <button>Create New Post</button>
+    <h1><span class="fa fa-toggle-down fa-spin"></span> reddon't</h1>
+    <input type="text" ng-model="search" placeholder="Search">
+    <button ng-model="newPost" ng-click="newPost = !newPost">Create New Post</button>
 
   </header>
-  <div ng-controller="PostsController">
-    <ul ng-repeat="post in posts | orderBy:'-rating'" style="list-style-type:none;">
+  <div ng-hide="newPost">
+    <div class="formBox">
+      <form name="newPost" ng-submit="newPost(post)">
+        <h3>Post Something</h3>
+        <input type="text" name="title" placeholder="Title" ng-model="post.title"></input><br><br>
+        <input type="text" name="author" placeholder="Author" ng-model="post.author"></input><br><br>
+        <input type="url" name"image" placeholder="Image URL" ng-model="post.image"></input><br><br>
+        <input type="text" name"description" placeholder="Description" ng-model="post.description"></input><br><br>
+        <button type="submit">Post it.</button><br><br>
+      </form>  
+    </div>
+  </div>
+  <div >
+    <ul ng-repeat="post in posts | orderBy:'-rating' | filter:search" style="list-style-type:none;">
       <li>   
           <container class="postBody">
             <img ng-src="{{post.image}}">
 
             <h3>{{post.title}}</h3>
-            <span>{{post.rating}}
-            <span class="glyphicon glyphicon-arrow-up" ng-click="post.rating = post.rating + 1"></span>
-            <span class="glyphicon glyphicon-arrow-down" ng-click="post.rating = post.rating - 1"></span>
+            <span class="" ng-class="{'green':post.rating>0,'red':post.rating<0}">{{post.rating}}
+            <span class="glyphicon glyphicon-arrow-up up" ng-click="post.rating = post.rating + 1"></span>
+            <span class="glyphicon glyphicon-arrow-down down" ng-click="post.rating = post.rating - 1"></span>
             </span>
             <p>{{post.date }} by {{post.author}}</p>
             <p>{{post.description}}</p>
-            <button ng-show="{{post.comments.length}} > 0">Show Comments</button><button>Add Comment</button>
+            <button ng-show="{{post.comments.length}} > 0">See Comments</button>  <button>Add Comment</button>
           </container>
       <li>
     <ul>
