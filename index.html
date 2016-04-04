@@ -12,9 +12,14 @@
     <h1><span class="fa fa-toggle-down fa-spin"></span> reddon't</h1>
     <input type="text" ng-model="search" placeholder="Search">
     <button ng-model="newPost" ng-click="newPost = !newPost">Create New Post</button>
+  </header><br>
 
-  </header>
-  <p>Sort posts</p>
+  <!-- select post sort method -->
+  <div class="sortPosts">
+    <p>Sort posts by: <span ng-click="sortType='-rating'; sortReverse = !sortReverse">  Rating </span>|<span ng-click="sortType='-date'; sortReverse = !sortReverse"> Date </span>|<span ng-click="sortType='-comments.length'; sortReverse = !sortReverse"> Comments </span></p>
+  </div>
+
+  <!-- new post form -->
   <div ng-hide="newPost">
     <div class="formBox">
       <form name="newPost" ng-submit="addPost(post)">
@@ -27,8 +32,10 @@
       </form>  
     </div>
   </div>
+
+  <!-- post display loop -->
   <div >
-    <ul ng-repeat="post in posts | orderBy:'-date' | filter:search" style="list-style-type:none;">
+    <ul ng-repeat="post in posts | orderBy:sortType:sortReverse | filter:search" style="list-style-type:none;">
       <li>   
           <container class="postBody">
             <img ng-src="{{post.image}}">
@@ -40,8 +47,9 @@
             </span>
             <p>{{post.date | date:'MM/dd/yyyy'}} at {{post.date | date:'shortTime'}} by {{post.author}}</p>
             <p>{{post.description}}</p>
-            <button ng-model="showComments" ng-init="showComments = false" ng-show="post.comments.length > 0" ng-click="showComments = !showComments">See Comments</button>  <button ng-model="newComment" ng-click="newComment = !newComment">Add Comment</button>
+            <button ng-model="showComments" ng-init="showComments = false" ng-show="post.comments.length > 0" ng-click="showComments = !showComments">{{post.comments.length}} Comments</button>  <button ng-model="newComment" ng-click="newComment = !newComment">Add Comment</button>
             
+            <!-- comments drop down -->
             <div ng-show="showComments">
               <div ng-repeat="comment in post.comments | orderBy:'-date'">
                 <hr><br>
@@ -49,7 +57,9 @@
                 <p>{{comment.text}}</p>
               </div>
             </div>
-          </container><br>
+          </container>
+
+          <!-- new comment form -->
           <div ng-hide="newComment">
             <div class="commentBox">
               <form name="newComment" ng-submit="addComment(comment, post.id)" ng-submit="newComment">

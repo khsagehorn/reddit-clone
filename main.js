@@ -53,8 +53,11 @@ app.controller('PostsController', function($scope){
 
   ]
 
+  $scope.sortType = '-date';
+
 
   $scope.addPost = function(post) {
+    $scope.post.id = $scope.posts.length + 1;
     $scope.post.date = Date.now();
     $scope.post.rating = 0;
     $scope.posts.push(post);

@@ -9,6 +9,10 @@ img {
   margin-right: 1rem;
 }
 
+.sortPosts {
+  text-align: center;
+}
+
 .postBody {
   float: left;
 
