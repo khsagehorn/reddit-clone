@@ -99,5 +99,25 @@ header button{
   color: red;
 }
 
-.
+.ng-enter {
+  animation: fadeInRight .5s;
+}
 
+.ng-leave {
+  animation: fadeOutRight .5s;
+}
+
+.sortPosts span {
+  font-size: 1.8rem;
+  color: #457B9D;
+  cursor: pointer;
+}
+
+.sortPosts span:hover {
+  color: #E63946;
+}
+
+.glyphicon:hover {
+  transform: translate(0px,2px);
+  cursor:pointer;
+}

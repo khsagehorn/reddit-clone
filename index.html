@@ -16,7 +16,7 @@
 
   <!-- select post sort method -->
   <div class="sortPosts">
-    <p>Sort posts by: <span ng-click="sortType='-rating'; sortReverse = !sortReverse">  Rating </span>|<span ng-click="sortType='-date'; sortReverse = !sortReverse"> Date </span>|<span ng-click="sortType='-comments.length'; sortReverse = !sortReverse"> Comments </span></p>
+    <p>Sort posts by: &nbsp<span ng-click="sortType='rating'; sortReverse = !sortReverse">  Rating </span>|<span ng-click="sortType='date'; sortReverse = !sortReverse"> Date </span>|<span ng-click="sortType='comments.length'; sortReverse = !sortReverse"> Comments </span></p>
   </div>
 
   <!-- new post form -->
@@ -42,8 +42,8 @@
 
             <h3>{{post.title}}</h3>
             <span class="" ng-class="{'green':post.rating>0,'red':post.rating<0}">{{post.rating}}
-            <span class="glyphicon glyphicon-arrow-up up" ng-click="post.rating = post.rating + 1"></span>
-            <span class="glyphicon glyphicon-arrow-down down" ng-click="post.rating = post.rating - 1"></span>
+              <span class="glyphicon glyphicon-arrow-up up" ng-click="post.rating = post.rating + 1"></span>
+              <span class="glyphicon glyphicon-arrow-down down" ng-click="post.rating = post.rating - 1"></span>
             </span>
             <p>{{post.date | date:'MM/dd/yyyy'}} at {{post.date | date:'shortTime'}} by {{post.author}}</p>
             <p>{{post.description}}</p>
@@ -62,7 +62,7 @@
           <!-- new comment form -->
           <div ng-hide="newComment">
             <div class="commentBox">
-              <form name="newComment" ng-submit="addComment(comment, post.id)" ng-submit="newComment">
+              <form name="newComment" ng-submit="addComment(comment, post.id)">
                 <h3>Say Something</h3>
                 <input type="text" name="user" placeholder="User" ng-model="comment.user"></input><br><br>
                 <input type="text" name="text" placeholder="Text" ng-model="comment.text"></input><br><br>
@@ -77,13 +77,10 @@
 
   </div>
 
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0-beta.3/angular-moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular.min.js"></script>
-    <script src="app.js"></script>
-    <script src="controllers.js"></script>
-    <script src="directives.js"></script>
-    <script src="main.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
