@@ -1,9 +1,5 @@
-require('angular-moment');
-var ngModule = anglar.module('ngApp',['angularMoment']);
-ngModule.constant('moment', require('moment-timezone'));
-
 var app = angular.module('redditClone', []);
-angular.module('animateApp', ['ngAnimate']);
+
 
 app.controller('PostsController', function($scope){
   $scope.posts = [

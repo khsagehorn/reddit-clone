@@ -1,0 +1,9 @@
+{
+  "firebase": "Hunters-Reddit-Clone",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
