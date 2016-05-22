@@ -1,5 +1,10 @@
 body {
   background-color: #f9f9f9;
+  padding-bottom: 20px;
+}
+
+p {
+  text-shadow: 1em;
 }
 
 img {
