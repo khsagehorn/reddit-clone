@@ -1,4 +1,4 @@
-# My Reddit Clone
+# reddon't
 
 https://hunters-reddit-clone.firebaseapp.com/
 
